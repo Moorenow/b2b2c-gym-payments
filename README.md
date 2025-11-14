@@ -1,8 +1,13 @@
-<p>
-  <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel Logo" height="96" />
-  <span style="margin: 0 16px; font-size: 48px; font-weight: 600;">+</span>
-  <img src="https://vuejs.org/images/logo.png" alt="Vue.js Logo" height="96" />
-</p>
+<table align="center">
+  <tr>
+    <td>
+      <img src="https://laravel.com/img/logomark.min.svg" alt="Logo de Laravel" height="80" />
+    </td>
+    <td>
+      <img src="https://vuejs.org/images/logo.png" alt="Logo de Vue.js" height="80" />
+    </td>
+  </tr>
+</table>
 
 # B2B/B2C Gym Payments
 
@@ -40,7 +45,7 @@ Proyecto base para administración de gimnasios.
 3. **Configurar entorno**
 
    ```bash
-   .env.example .env
+   cp .env.example .env
    php artisan key:generate
    ```
 
