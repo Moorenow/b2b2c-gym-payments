@@ -1,9 +1,9 @@
-<table align="center">
+<table align="center" width="100%">
   <tr>
-    <td>
+    <td style="width: 50%; text-align: center;">
       <img src="https://laravel.com/img/logomark.min.svg" alt="Logo de Laravel" height="80" />
     </td>
-    <td>
+    <td style="width: 50%; text-align: center;">
       <img src="https://vuejs.org/images/logo.png" alt="Logo de Vue.js" height="80" />
     </td>
   </tr>
