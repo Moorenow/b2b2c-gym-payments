@@ -4,6 +4,7 @@ import AdminRoles from '@/views/AdminRoles.vue';
 import Dashboard from '@/views/Dashboard.vue';
 import Home from '@/views/Home.vue';
 import Login from '@/views/Login.vue';
+import PlansAndMembers from '@/views/PlansAndMembers.vue';
 import Register from '@/views/Register.vue';
 import { useAuthStore } from '@/stores/authStore';
 
@@ -23,6 +24,12 @@ const router = createRouter({
             path: '/admin/roles',
             name: 'admin.roles',
             component: AdminRoles,
+            meta: { requiresAuth: true, requiresRole: ['super_admin', 'gym_admin'] },
+        },
+        {
+            path: '/admin/plans',
+            name: 'admin.plans',
+            component: PlansAndMembers,
             meta: { requiresAuth: true, requiresRole: ['super_admin', 'gym_admin'] },
         },
     ],

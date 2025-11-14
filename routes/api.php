@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleManagementController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +23,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
         ->group(function (): void {
             Route::get('roles', [RoleManagementController::class, 'index']);
             Route::post('users/{user}/role', [RoleManagementController::class, 'updateUserRole']);
+            Route::apiResource('plans', PlanController::class);
+            Route::apiResource('members', MemberController::class);
         });
 });

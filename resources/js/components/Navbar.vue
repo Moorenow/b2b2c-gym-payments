@@ -48,6 +48,14 @@
                     >
                         Roles y Permisos
                     </RouterLink>
+                    <RouterLink
+                        v-if="canManageRoles"
+                        to="/admin/plans"
+                        class="block px-4 py-2 hover:bg-slate-100"
+                        @click="closeMenu"
+                    >
+                        Planes y Miembros
+                    </RouterLink>
                     <button class="block w-full px-4 py-2 text-left hover:bg-slate-100" type="button" @click="handleLogout">
                         Cerrar Sesión
                     </button>

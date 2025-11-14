@@ -29,23 +29,53 @@
                     </div>
                     <div>
                         <label class="text-sm font-medium text-slate-300" for="password">Contraseña</label>
-                        <input
-                            id="password"
-                            v-model="form.password"
-                            type="password"
-                            class="mt-2 w-full rounded-lg border border-slate-700 bg-transparent px-4 py-2 focus:border-emerald-400 focus:outline-none"
-                            required
-                        />
+                        <div class="relative mt-2">
+                            <input
+                                id="password"
+                                v-model="form.password"
+                                :type="showPassword ? 'text' : 'password'"
+                                class="w-full rounded-lg border border-slate-700 bg-transparent px-4 py-2 pr-12 focus:border-emerald-400 focus:outline-none"
+                                required
+                            />
+                            <button
+                                class="absolute inset-y-0 right-0 flex items-center px-3 text-slate-400 transition hover:text-slate-200"
+                                type="button"
+                                @click="togglePasswordVisibility"
+                            >
+                                <span class="sr-only">Mostrar/Ocultar contraseña</span>
+                                <svg v-if="showPassword" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3l18 18m-1.5-3.75C17.5 20 15 21 12 21c-6 0-10-6-10-9 0-1.17.35-2.28.97-3.25M9.88 9.88A3 3 0 0114.12 14.12M9 5.1C9.94 5.04 10.95 5 12 5c6 0 10 6 10 9 0 .7-.1 1.38-.3 2.03" />
+                                </svg>
+                                <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12zm10 3a3 3 0 100-6 3 3 0 000 6z" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     <div>
                         <label class="text-sm font-medium text-slate-300" for="password_confirmation">Confirmar Contraseña</label>
-                        <input
-                            id="password_confirmation"
-                            v-model="form.password_confirmation"
-                            type="password"
-                            class="mt-2 w-full rounded-lg border border-slate-700 bg-transparent px-4 py-2 focus:border-emerald-400 focus:outline-none"
-                            required
-                        />
+                        <div class="relative mt-2">
+                            <input
+                                id="password_confirmation"
+                                v-model="form.password_confirmation"
+                                :type="showPasswordConfirmation ? 'text' : 'password'"
+                                class="w-full rounded-lg border border-slate-700 bg-transparent px-4 py-2 pr-12 focus:border-emerald-400 focus:outline-none"
+                                required
+                            />
+                            <button
+                                class="absolute inset-y-0 right-0 flex items-center px-3 text-slate-400 transition hover:text-slate-200"
+                                type="button"
+                                @click="togglePasswordConfirmationVisibility"
+                            >
+                                <span class="sr-only">Mostrar/Ocultar confirmación</span>
+                                <svg v-if="showPasswordConfirmation" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3l18 18m-1.5-3.75C17.5 20 15 21 12 21c-6 0-10-6-10-9 0-1.17.35-2.28.97-3.25M9.88 9.88A3 3 0 0114.12 14.12M9 5.1C9.94 5.04 10.95 5 12 5c6 0 10 6 10 9 0 .7-.1 1.38-.3 2.03" />
+                                </svg>
+                                <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12zm10 3a3 3 0 100-6 3 3 0 000 6z" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     <p v-if="errorMessage" class="text-sm text-rose-400">{{ errorMessage }}</p>
                     <button
@@ -80,6 +110,16 @@ const form = reactive({
 
 const loading = ref(false);
 const errorMessage = ref('');
+const showPassword = ref(false);
+const showPasswordConfirmation = ref(false);
+
+const togglePasswordVisibility = (): void => {
+    showPassword.value = !showPassword.value;
+};
+
+const togglePasswordConfirmationVisibility = (): void => {
+    showPasswordConfirmation.value = !showPasswordConfirmation.value;
+};
 
 const handleSubmit = async (): Promise<void> => {
     loading.value = true;

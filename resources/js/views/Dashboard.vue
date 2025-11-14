@@ -21,7 +21,7 @@
                         <p class="mt-2 text-3xl font-semibold">{{ dashboardData?.metrics.active_members ?? '--' }}</p>
                     </article>
                     <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-                        <p class="text-sm text-slate-400">MRR estimado</p>
+                        <p class="text-sm text-slate-400">Ingreso mensual estimado</p>
                         <p class="mt-2 text-3xl font-semibold">${{ dashboardData?.metrics.monthly_revenue ?? '--' }}</p>
                     </article>
                 </div>
